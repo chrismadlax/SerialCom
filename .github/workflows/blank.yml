@@ -17,10 +17,7 @@ jobs:
 
       - name: Run LabVIEW CLI to Build Executable
         run: |
-          # 呼叫 LabVIEW CLI 執行編譯
-          & "C:\Program Files\National Instruments\Shared\LabVIEW CLI\LabVIEWCLI.exe" `
-            -OperationName ExecuteBuildSpec `
-            -ProjectPath "C:\Users\chris\Documents\LabVIEW Data\Project\SerialCom\SerialCommPrj.lvproj" `
+          .\LabVIEWCLI.exe -OperationName ExecuteBuildSpec -ProjectPath "C:\Users\chris\Documents\LabVIEW Data\Project\SerialCom\SerialCommPrj.lvproj"
         #    -TargetName "My Computer" `
         #    -BuildSpecName "YourBuildSpecName"
         shell: pwsh
