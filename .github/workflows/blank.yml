@@ -18,9 +18,9 @@ jobs:
       - name: Run LabVIEW CLI to Build Executable
         run: |
           LabVIEWCLI.exe -OperationName ExecuteBuildSpec -ProjectPath "C:\Users\chris\Documents\LabVIEW Data\Project\SerialCom\SerialCommPrj.lvproj"
-          #    -TargetName "My Computer" `
-          #    -BuildSpecName "YourBuildSpecName"
-        shell: pwsh
+          #  -TargetName "My Computer" `
+          #  -BuildSpecName "YourBuildSpecName"
+          #  shell: pwsh
 
       - name: Upload Built Executable Artifact
         uses: actions/upload-artifact@v4
