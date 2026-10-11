@@ -1,0 +1,33 @@
+name: Build LabVIEW Executable
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build:
+    # 指定使用你剛剛註冊、裝有 LabVIEW 的自我主機
+    runs-on: self-hosted 
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Run LabVIEW CLI to Build Executable
+        run: |
+          # 呼叫 LabVIEW CLI 執行編譯
+          & "C:\Program Files\National Instruments\Shared\LabVIEW CLI\LabVIEWCLI.exe" `
+            -OperationName ExecuteBuildSpec `
+            -ProjectPath "C:\Users\chris\Documents\LabVIEW Data\Project\SerialCom\SerialCommPrj.lvproj" `
+        #    -TargetName "My Computer" `
+        #    -BuildSpecName "YourBuildSpecName"
+        shell: pwsh
+
+      - name: Upload Built Executable Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: LabVIEW-Executable
+          path: |
+            YourProjectFolder/../Builds/SerialCommPrj/SimpleSerial
