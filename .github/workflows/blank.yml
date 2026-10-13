@@ -18,13 +18,8 @@ jobs:
       - name: Run LabVIEW CLI to Build Executable
         shell: cmd
         run:  LabVIEWCLI -OperationName ExecuteBuildSpec -ProjectPath "C:\Users\chris\Documents\LabVIEW Data\Project\SerialCom\SerialCommPrj.lvproj"
-
-      - name: generate date string
-        id: date
-        shell: pwsh
-        run: echo "value=$(Get-Date -Format 'yyyyMMdd_HHmm')" >> $env:GITHUB_OUTPUT
         
       - uses: actions/upload-artifact@v7
         with:
-          name: LabVIEW_Executable_${{ steps.date.outputs.value }}_build${{ github.run_number }}
+          name: SimpleSerial_Exefile_${{ github.sha }}
           path: C:\Users\chris\Documents\LabVIEW Data\Project\builds\SerialCommPrj\SimpleSerial
