@@ -5,7 +5,7 @@ on:
     branches: [ "main", "master" ]
   pull_request:
     branches: [ "main", "master" ]
-
+  workflow_dispatch: {}         # 保留手動觸發能力
 jobs:
   build:
     # 指定使用你剛剛註冊、裝有 LabVIEW 的自我主機
@@ -13,14 +13,13 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Run LabVIEW CLI to Build Executable
-        run: 
-          LabVIEWCLI.exe -OperationName ExecuteBuildSpec -ProjectPath "C:\Users\chris\Documents\LabVIEW Data\Project\SerialCom\SerialCommPrj.lvproj"
+        run:  LabVIEWCLI.exe -OperationName ExecuteBuildSpec -ProjectPath "C:\Users\chris\Documents\LabVIEW Data\Project\SerialCom\SerialCommPrj.lvproj"
 
       - name: Upload Built Executable Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: LabVIEW-Executable
           path: 
