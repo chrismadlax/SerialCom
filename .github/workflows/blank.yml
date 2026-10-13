@@ -9,8 +9,10 @@ on:
 
 jobs:
   build:
-    # 指定使用你剛剛註冊、裝有 LabVIEW 的自我主機
-    runs-on: self-hosted 
+    runs-on: self-hosted
+    defaults:
+      run:
+        shell: cmd
 
     steps:
       - name: Checkout Repository
